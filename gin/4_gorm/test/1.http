@@ -1,0 +1,21 @@
+GET localhost:8080/v1/todo
+
+### create a todo 1
+POST localhost:8080/v1/todo
+Content-Type: application/json
+
+{
+  "title": "title1",
+  "description": "1111"
+}
+### create a todo 2
+POST localhost:8080/v1/todo
+Content-Type: application/json
+
+{
+  "title": "title2",
+  "description": "2222"
+}
+
+###
+GET localhost:8080/v1/todo

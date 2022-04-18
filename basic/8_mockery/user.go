@@ -1,6 +1,7 @@
 package main
 
 import (
+	"8_mockery/model"
 	"context"
 	"errors"
 )
@@ -8,23 +9,16 @@ import (
 // ErrKeyConflict insert or update 시 키 충돌 시 발생합니다.
 var ErrKeyConflict = errors.New("conflict key")
 
-//go:generate mockery --name UserDB --case underscore --inpackage
-// User 사용자 DB 모델을 나타냅니다.
-type User struct {
-	Email string
-	Name  string
-}
-
 // UserDB 사용자 관련 CRUD 인터페이스를 나타냅니다.
 type UserDB interface {
-	Save(ctx context.Context, u *User) error
+	Save(ctx context.Context, u *model.User) error
 }
 
 type UserService struct {
 	userDB UserDB
 }
 
-func (us *UserService) Save(ctx context.Context, u *User) error {
+func (us *UserService) Save(ctx context.Context, u *model.User) error {
 	// 간단하게 유효성 검사를 진행합니다.
 	if u.Email == "" {
 		return errors.New("invalid email")

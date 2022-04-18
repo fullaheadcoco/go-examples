@@ -2,12 +2,13 @@
 
 ## mockery  설치
 ```
+# go install github.com/vektra/mockery/v2@latest
 brew install mockery
 ```
 
 ## mock_user_db.go 생성
 ```shell
-go generate ./...
+mockery --all --keeptree
 ```
 
 ## run test
